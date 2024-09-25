@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Ferrari 911s",
+    "brand": "Ferrari",
+    "class": "LMP",
+    "uid": "1"
+  },
+  {
+    "name": "Red Bull RB19",
+    "brand": "Red Bull Racing",
+    "class": "F1",
+    "uid": "2"
+  },
+  {
+    "name": "Mercedes W14",
+    "brand": "Mercedes-AMG Petronas Motorsport",
+    "class": "F1",
+    "uid": "3"
+  },
+  {
+    "name": "McLaren MCL67",
+    "brand": "McLaren Racing",
+    "class": "F1",
+    "uid": "4"
+  },
+  {
+    "name": "Aston Martin AMR23",
+    "brand": "Aston Martin Aramco Cognizant Team",
+    "class": "F1",
+    "uid": "5"
+  },
+  {
+    "name": "Alpine A523",
+    "brand": "BWT Alpine F1 Team",
+    "class": "F1",
+    "uid": "6"
+  },
+  {
+    "name": "Alfa Romeo C43",
+    "brand": "Alfa Romeo F1 Team Sauber",
+    "class": "F1",
+    "uid": "7"
+  },
+  {
+    "name": "Haas VF23",
+    "brand": "Haas F1 Team",
+    "class": "F1",
+    "uid": "8"
+  },
+  {
+    "name": "Williams FW45",
+    "brand": "Williams Racing",
+    "class": "F1",
+    "uid": "9"
+  },
+  {
+    "name": "AlphaTauri AT04",
+    "brand": "Scuderia AlphaTauri",
+    "class": "F1",
+    "uid": "10"
+  }
+]
