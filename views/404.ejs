@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="author"
+      content="paul mondl (isdadev) & phillip schlichting (philrico)"
+    />
+    <title>404 not found</title>
+    <style>
+      /* styling to center the text and move it down a little */
+      .error {
+        margin-top: 10%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body id="404">
+    <div class="error">
+      <h1>Seems like the page you requested could not be found</h1>
+      <button id="returnButton"><a>Back</a></button>
+    </div>
+
+    <script>
+      // selects the button to return to the galler
+      const returnButton = document.querySelector('#returnButton');
+
+      // adds a simple event-listener that goes back to /gallery
+      returnButton.addEventListener('click', () => {
+        // relocates the user on click
+        window.location = '/gallery';
+      });
+    </script>
+  </body>
+</html>
