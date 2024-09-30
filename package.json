@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "postinstall": "npm list", // Log the installed packages
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +15,6 @@
     "ejs": "^3.1.10",
     "express": "^4.21.0",
     "nodemon": "^3.1.7",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7" // Ensure this is included
   }
 }
