@@ -1,13 +1,12 @@
+# railway.toml
+
 [build]
-# Custom build command to install Python, build-essential, and rebuild sqlite3 from source
-builder = "bash"
-build = '''
-apt-get update && \
-apt-get install -y python3 build-essential && \
-npm install && \
-npm rebuild sqlite3 --build-from-source
-'''
+# Install Python and other necessary build tools before running the build
+nixpacks = { 
+    install = ["python3", "build-essential"], 
+    build = "npm install && npm rebuild sqlite3 --build-from-source"
+}
 
 [start]
-# Start the app
+# Command to start your application
 cmd = "npm start"
