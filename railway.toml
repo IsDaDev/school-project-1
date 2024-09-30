@@ -1,12 +1,10 @@
 # railway.toml
 
 [build]
-# Add Python and build tools during the build process
-nixpacks = { 
+nixpacks = {
     install = ["python3", "build-essential"], 
     build = "npm ci && npm rebuild sqlite3 --build-from-source"
 }
 
 [start]
-# Start the app
 cmd = "npm start"
