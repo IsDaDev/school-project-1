@@ -8,18 +8,18 @@ let carData = []; // Initialize carData as an empty array
 // Create an instance of Express
 const app = express();
 
+// Middleware to serve static files and set the view engine
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
+
 // Connect to the SQLite database
-const db = new sqlite3.Database('carDBLong.db', sqlite3.OPEN_READWRITE, (err) => {
+const db = new sqlite3.Database(path.join(__dirname, 'carDBLong.db'), sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     console.error('Could not connect to the database', err);
   } else {
     console.log('Connected to the SQLite database.');
   }
 });
-
-// Middleware to serve static files and set the view engine
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('view engine', 'ejs');
 
 // Start the server
 const PORT = process.env.PORT || 3000;
