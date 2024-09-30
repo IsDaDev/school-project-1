@@ -1,2 +1,13 @@
 [build]
-dependencies = ["sqlite3"]
+# Custom build command to install Python, build-essential, and rebuild sqlite3 from source
+builder = "bash"
+build = '''
+apt-get update && \
+apt-get install -y python3 build-essential && \
+npm install && \
+npm rebuild sqlite3 --build-from-source
+'''
+
+[start]
+# Start the app
+cmd = "npm start"
