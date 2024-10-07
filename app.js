@@ -1,9 +1,27 @@
+// **********************************************************************************************************
+// INFROMATIONS ABOUT THE PROJECT 
+// school-project-1 aka projectmosc is a schoolproject that showcases cars with unique media designs crearted
+// by us paul mond (isdadev) & phillip schlichting (philrico)
+// **********************************************************************************************************
+
+// **********************************************************************************************************
+// IMPORT SECTION
+// **********************************************************************************************************
+
 // Import necessary modules
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+// **********************************************************************************************************
+// VARIABLE SECTION
+// **********************************************************************************************************
+
 let carData = []; // Initialize carData as an empty array
+
+// **********************************************************************************************************
+// SERVER SECTION
+// **********************************************************************************************************
 
 // Create an instance of Express
 const app = express();
@@ -12,6 +30,16 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// **********************************************************************************************************
+// DATABASE QUERY ALL SECTION
+// **********************************************************************************************************
+
 // Connect to the SQLite database
 const db = new sqlite3.Database(path.join(__dirname, 'carDBLong.db'), sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
@@ -19,12 +47,6 @@ const db = new sqlite3.Database(path.join(__dirname, 'carDBLong.db'), sqlite3.OP
   } else {
     console.log('Connected to the SQLite database.');
   }
-});
-
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });
 
 // Load car data from the database on server start
@@ -36,6 +58,10 @@ db.all('SELECT * FROM carDBLong', (error, rows) => {
     console.log('Car data loaded successfully.');
   }
 });
+
+// **********************************************************************************************************
+// ROUTES SECTION
+// **********************************************************************************************************
 
 // Define routes
 app.get('/', (req, res) => {
@@ -68,6 +94,10 @@ app.get('/gallery/:carName', (req, res) => {
     }
   });
 });
+
+// **********************************************************************************************************
+// ERROR HANDLING SECTION
+// **********************************************************************************************************
 
 // Handle errors
 app.use((req, res, next) => {
