@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'formular1';
+  src: url('/public/Formula1-Regular.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -44,4 +49,141 @@ body {
 
 #gallery .filter .filterClass {
   text-align: center;
+}
+
+#home {
+  background-color: rgb(61, 60, 60);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#home * {
+  font-family: 'formular1', sans-serif;
+  scroll-behavior: smooth;
+}
+
+#home header nav ul {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2%;
+  position: absolute;
+  z-index: 3;
+}
+
+#home header nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+#home header nav ul li a {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+#home header nav ul li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  display: block;
+  transition: 1s;
+  background-color: white;
+  margin: auto;
+}
+
+#home header nav ul li:hover::after {
+  width: 100%;
+}
+
+#home main .header-section {
+  height: 100vh;
+  background-color: rgb(46, 94, 94);
+}
+
+#home main .header-section .media video {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 0;
+}
+
+#home main .header-section .media img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+#home main .header-section .cta-button button {
+  position: absolute;
+  bottom: 13%;
+  right: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+#home main .header-section .control-button .button-left {
+  position: absolute;
+  bottom: 50%;
+  left: 2%;
+  z-index: 3;
+}
+
+#home main .header-section .control-button .button-right {
+  position: absolute;
+  bottom: 50%;
+  right: 2%;
+  z-index: 3;
+}
+
+#home main .intro-section {
+  height: auto;
+  padding: 10rem 3rem;
+  color: white;
+}
+
+#home main .intro-section h1 {
+  text-align: center;
+}
+
+#home main .intro-section li::marker {
+  font-size: 24px;
+}
+
+#home main .intro-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#home main .intro-section .text-section {
+  color: white;
+}
+
+#home main .intro-section .text-section p {
+  text-align: justify;
+  line-height: 20px;
+  letter-spacing: 1px;
+}
+
+#home main .intro-section .image-section {
+  margin: auto auto;
+}
+
+@media screen and (max-width: 800px) {
+  #home main .intro-section .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+#home main .intro-section .image-section img {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+}
+
+#home main .COTD-section {
+  height: 100vh;
+  text-align: center;
+  background-color: rgb(90, 88, 88);
+  padding: 3rem;
 }
