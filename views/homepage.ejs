@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body id="home">
     <main>
@@ -12,23 +12,23 @@
         <header>
           <nav>
             <ul>
-              <li><a href="">Home</a></li>
-              <li><a href="">Gallery</a></li>
-              <li><a href="">Contact</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </nav>
         </header>
         <div class="media">
           <video muted id="header-video-1" autoplay>
-            <source src="/assets/video.mp4" />
+            <source src="assets/video.mp4" />
           </video>
           <img
-            src="/assets/header-image-1.png"
+            src="assets/header-image-1.png"
             alt="headerimg1"
             id="header-image-1"
           />
           <img
-            src="/assets/header-image-2.png"
+            src="assets/header-image-2.png"
             alt="headerimg2"
             id="header-image-2"
           />
@@ -39,23 +39,23 @@
         <div class="control-button">
           <div class="button-left">
             <button id="control-button-left">
-              <img src="/assets/arrow-left.png" alt="" height="30px" />
+              <img src="assets/arrow-left.png" alt="" height="30px" />
             </button>
           </div>
           <div class="button-right">
             <button id="control-button-right">
-              <img src="/assets/arrow-right.png" alt="" height="30px" />
+              <img src="assets/arrow-right.png" alt="" height="30px" />
             </button>
           </div>
         </div>
       </div>
       <div class="intro-section">
-        <h1>About us</h1>
         <div class="container">
           <div class="image-section">
-            <img src="../assets/logo.jpeg" alt="intro image" />
+            <img src="assets/logo.jpeg" alt="intro image" />
           </div>
           <div class="text-section">
+            <h1>About us</h1>
             <ul>
               <li>
                 <h2>Who are we?</h2>
@@ -102,9 +102,32 @@
       </div>
       <div class="COTD-section" id="COTD-section">
         <h2>We present you the car of the month</h2>
+        <div class="COTD">
+          <div class="card" data-class="<%= randomCar['class'] %>">
+            <div class="carImg">
+              <a
+                href="/gallery/<%= randomCar['uid'] %>"
+                class="carClass <%= randomCar['uid'] %>"
+                ><img src="<%= randomCar['image_url'] %>" alt="Racecar"
+              /></a>
+            </div>
+            <div class="textSection1">
+              <h3><%= randomCar["name"] %></h3>
+              <div></div>
+              <h3><%= randomCar["brand"] %></h3>
+              <h4><%= randomCar["class"] %></h4>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <footer></footer>
-    <script src="/scripts/functionality.js"></script>
+    <footer>
+      <p>&copy; 2024 MOSC</p>
+      <div class="footer-links">
+        <p><a href="/impressum">impressum</a></p>
+        <p><a href="/privacy">privacy</a></p>
+      </div>
+    </footer>
+    <script src="scripts/functionality.js"></script>
   </body>
 </html>

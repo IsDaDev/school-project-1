@@ -1,13 +1,21 @@
 @font-face {
   font-family: 'formular1';
-  src: url('/public/Formula1-Regular.ttf');
+  src: url('font.ttf');
+}
+
+* {
+  font-family: 'formular1', sans-serif !important;
 }
 
 body {
   margin: 0;
   padding: 0;
+  color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 #gallery .gallery-container {
   width: 100%;
   height: auto;
@@ -17,6 +25,7 @@ body {
   gap: 1rem;
 }
 
+#home main .COTD-section .card,
 #gallery .card {
   border: 1px solid orange;
   min-width: 25%;
@@ -25,10 +34,12 @@ body {
   margin: 30px;
 }
 
+#home main .COTD-section .carImg,
 #gallery .carImg {
   height: 100%;
 }
 
+#home main .COTD-section .textSection1,
 #gallery .textSection1 {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -41,10 +52,17 @@ body {
   grid-template-columns: 8% 1fr;
 }
 
+#gallery {
+  background-color: rgb(112, 151, 151);
+}
+
+#gallery nav {
+  padding-bottom: 3rem;
+}
+
 #gallery .filter {
-  background-color: rgb(39, 43, 43);
-  height: 100vh;
-  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 #gallery .filter .filterClass {
@@ -54,45 +72,10 @@ body {
 #home {
   background-color: rgb(61, 60, 60);
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 #home * {
-  font-family: 'formular1', sans-serif;
-  scroll-behavior: smooth;
-}
-
-#home header nav ul {
-  display: flex;
-  gap: 2rem;
-  margin-right: 2%;
-  position: absolute;
-  z-index: 3;
-}
-
-#home header nav ul li {
-  list-style-type: none;
-  display: inline-block;
-}
-
-#home header nav ul li a {
-  font-size: 30px;
-  text-decoration: none;
-  color: white;
-}
-
-#home header nav ul li::after {
-  content: '';
-  width: 0%;
-  height: 2px;
-  display: block;
-  transition: 1s;
-  background-color: white;
-  margin: auto;
-}
-
-#home header nav ul li:hover::after {
-  width: 100%;
+  overflow: hidden;
 }
 
 #home main .header-section {
@@ -120,6 +103,13 @@ body {
   right: 50%;
   padding: 1rem;
   border-radius: 10px;
+  background-color: gray;
+}
+
+#home main .header-section .cta-button button a {
+  text-decoration: none;
+  font-family: 'formular1', sans-serif;
+  color: white;
 }
 
 #home main .header-section .control-button .button-left {
@@ -173,6 +163,10 @@ body {
   #home main .intro-section .container {
     grid-template-columns: 1fr;
   }
+
+  #home main .COTD-section {
+    padding: 3rem 10rem;
+  }
 }
 
 #home main .intro-section .image-section img {
@@ -182,8 +176,153 @@ body {
 }
 
 #home main .COTD-section {
-  height: 100vh;
+  height: auto;
   text-align: center;
   background-color: rgb(90, 88, 88);
-  padding: 3rem;
+  padding: 5rem 30%;
+}
+
+#impressum,
+#privacy {
+  background-color: rgb(112, 151, 151);
+}
+
+.container {
+  padding: 100px 20% 0 20%;
+}
+
+#contact-page {
+  background-color: rgb(112, 151, 151);
+}
+
+#contact {
+  height: auto;
+  text-align: center;
+  display: flex;
+  padding: 5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contact .contact-right {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'top-left'
+    'top-right'
+    'message'
+    'button';
+  gap: 1rem;
+}
+
+#contact .contact-right input,
+#contact .contact-right #message {
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 22px;
+  width: 500px;
+}
+
+#contact .contact-right input:first-of-type {
+  grid-area: top-left;
+}
+
+#contact .contact-right input:nth-of-type(2) {
+  grid-area: top-right;
+}
+
+#contact .contact-right #message {
+  margin-top: 10px;
+  height: 156px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 25px;
+  resize: none;
+  grid-area: message;
+}
+
+#contact .contact-right button[type='submit'] {
+  grid-area: button;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  background-color: gray;
+}
+
+#contact .captcha-field {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input {
+  padding: 0.5rem;
+}
+
+#contact .contact-left h3 {
+  font-size: var(--default-font-size);
+  line-break: auto;
+}
+
+#contact .form {
+  display: flex;
+  padding: 5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2%;
+  position: absolute;
+  z-index: 3;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+nav ul li a {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  display: block;
+  transition: 1s;
+  background-color: white;
+  margin: auto;
+}
+
+nav ul li:hover::after {
+  width: 100%;
+}
+
+footer {
+  justify-content: space-between;
+  padding: 0 3rem;
+  display: flex;
+  overflow: hidden;
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+footer .footer-links a {
+  color: white;
 }

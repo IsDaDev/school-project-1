@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Contact us</title>
+  </head>
+  <body id="contact-page">
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div id="contact" class="slide-left">
+        <div class="contact-left">
+          <h3>
+            Feel free to reach out if you enjoyed what you saw or if you have any
+            questions! <br>
+             We are always happy to chat and provide more information.
+          </h3>
+        </div>
+        <div class="contact-right">
+          <div class="contact-right-left">
+          <form id="contact-form">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Name"
+            />
+            <br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Email"
+            />
+            <br />
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="Subject"
+            />
+          </div>
+          <div class="contact-right-right">
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Message"
+            ></textarea>
+          </div>
+          <div class="contact-right-bottom">
+            <div class="captcha-field">
+              <label for="captcha">What is <span id="captchaX">x</span> + <span id="captchaY">y</span></label>
+              <button class="refreshCaptcha" type="menu">refresh captcha</button>
+            </div>
+            <input type="number" name="captcha" id="captcha">
+            <button type="submit">Submit</button>
+          </div>
+          </form>
+          <div class="codefield">
+            <p class="code">
+    
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <p>&copy; 2024 MOSC</p>
+        <div class="footer-links">
+          <p><a href="/impressum">impressum</a></p>
+          <p><a href="/privacy">privacy</a></p>
+        </div>
+      </footer>
+
+      <script src="scripts/form.js"></script>
+      <script>
+      const getNewCaptcha = () => {
+        fetch('/contact/refreshCaptcha', {
+          method: 'POST',
+          })
+          .then((data) => data.json())
+          .then((data) => {
+            const captchaX = (document.querySelector('#captchaX').innerHTML =
+              data.code1);
+            const captchaY = (document.querySelector('#captchaY').innerHTML =
+              data.code2);
+              fetch('/contact/updateCaptchaCode', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({result: data.result})
+              })
+          });
+      };
+        
+      
+      window.addEventListener('load', getNewCaptcha())
+
+      const refreshCaptcha = document.querySelector('.refreshCaptcha')
+      refreshCaptcha.addEventListener('click', () => {
+        getNewCaptcha()
+      })
+
+      // TODO 
+      // Refresh button sometimes submits forum --> only problem is captcha
+
+      </script>
+  </body>
+</html>

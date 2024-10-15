@@ -11,9 +11,18 @@
     <title>Galerie</title>
   </head>
   <body id="gallery">
-    <h1>Galerie</h1>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
       <div class="filter">
+        <h3>Filters</h3>
         <div class="filterClass">
           <label for="filterClassCheckbox">Class</label>
           <select name="filterClassSelection" id="filterClassSelection">
@@ -43,7 +52,13 @@
         <% } %>
       </div>
     </main>
-
+    <footer>
+      <p>&copy; 2024 MOSC</p>
+      <div class="footer-links">
+        <p><a href="/impressum">impressum</a></p>
+        <p><a href="/privacy">privacy</a></p>
+      </div>
+    </footer>
     <script>
       // variable to select the selection for the class-filter
       const filterClassSelection = document.getElementById(
