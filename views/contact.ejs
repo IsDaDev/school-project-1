@@ -65,7 +65,7 @@
               <label for="captcha">What is <span id="captchaX">x</span> + <span id="captchaY">y</span></label>
               <button class="refreshCaptcha" type="button">refresh captcha</button>
             </div>
-            <input type="number" name="captcha" id="captcha">
+            <input type="number" name="captcha" id="captcha" required>
             <button type="submit">Submit</button>
           </div>
           </form>
@@ -84,6 +84,8 @@
         </div>
       </footer>
 
+      <!-- imports script for the form -->
+      <!-- generates a new Captcha when the window loads -->
       <script src="scripts/form.js"></script>
       <script>
           window.addEventListener('load', getNewCaptcha())

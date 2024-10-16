@@ -8,9 +8,10 @@
 // IMPORT SECTION
 // **********************************************************************************************************
 
+// require file to get the public and private key
 require('dotenv').config();
 
-// Import necessary modules
+// import necessary modules
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
@@ -21,24 +22,25 @@ const emailjs = require('@emailjs/nodejs');
 // VARIABLE SECTION
 // **********************************************************************************************************
 
-let carData = []; // Initialize carData as an empty array
-let totalDatabaseRows;
-let captchaCode;
+let carData = []; // initialize carData as an empty array
+let captchaCode; // keeps track of the current right captcha
 
 // **********************************************************************************************************
 // SERVER SECTION
 // **********************************************************************************************************
 
-// Create an instance of Express
+// create an instance of Express
 const app = express();
 
-// Middleware to serve static files and set the view engine
+// middleware to serve static files and set the view engine
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+
+// middleware to parse the body of files
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Start the server
+// start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
@@ -62,10 +64,13 @@ emailjs.init({
 // DATABASE QUERY ALL SECTION
 // **********************************************************************************************************
 
-// Connect to the SQLite database
+// connect to the SQLite database
 const db = new sqlite3.Database(
+  // filepath
   path.join(__dirname, 'carDBLong.db'),
+  // method
   sqlite3.OPEN_READWRITE,
+  // error handling
   (err) => {
     if (err) {
       console.error('Could not connect to the database', err);
@@ -75,22 +80,13 @@ const db = new sqlite3.Database(
   }
 );
 
-// Load car data from the database on server start
+// load car data from the database on server start
 db.all('SELECT * FROM carDBLong', (error, rows) => {
   if (error) {
     console.error('Error fetching data from the database:', error);
   } else {
-    carData = rows; // Store the data in carData
+    carData = rows; // store the data in carData
     console.log('Car data loaded successfully.');
-  }
-});
-
-db.get('SELECT COUNT(*) AS count FROM carDBLong', (err, row) => {
-  if (err) {
-    console.error(err.message);
-    return;
-  } else {
-    totalDatabaseRows = row.count;
   }
 });
 
@@ -98,22 +94,28 @@ db.get('SELECT COUNT(*) AS count FROM carDBLong', (err, row) => {
 // ROUTES SECTION
 // **********************************************************************************************************
 
-// Define routes
+// route to the homepage
 app.get('/', (req, res) => {
+  // checks if the length of carData is bigger than 0
   if (carData.length > 0) {
+    // selects a random car from the loaded array containg all cars
     const randomCar = carData[Math.floor(Math.random() * carData.length)];
-
+    // renders the homepage and passes the car
     res.render('homepage', { randomCar });
   } else {
+    // if there was an error with getting carData it passes randomCar = null
     res.render('homepage', { randomCar: null });
   }
 });
 
+// route to get to the contact section
 app.get('/contact', (req, res) => {
   res.render('contact');
 });
 
+// post route to get the submitted form
 app.post('/contact/contactform', (req, res) => {
+  // extracts all necessary information from the post request and saves it
   const params = {
     name: req.body['name'],
     email: req.body['email'],
@@ -122,56 +124,79 @@ app.post('/contact/contactform', (req, res) => {
     captcha: req.body['captcha'],
   };
 
+  // checks if the captcha is correct
   if (params.captcha == captchaCode) {
+    // if thats the case it tries to send the email with the data
+    // param1: emailjs_service_id, param2: emailjs_template_id, param3: data
     emailjs
       .send(process.env.EMAILJS_SERVICE, process.env.EMAILJS_TEMPLATE, params)
       .then((response) => {
+        // if there is no error it returns code 2 and the right message
         res.json({ responseCode: 2, message: 'Contact form submitted' });
       })
       .catch((error) => {
+        // if there is an error it console logs it and returns code 3
         console.log('FAILED...', error);
         res.json({ responseCode: 3, message: 'Error submitting form' });
       });
   } else {
-    console.log(params.captcha + ' == ' + captchaCode);
+    // if the captcha is not correct it sends back code 1
+    // the code on the next line is only there for testing if it works
+    // console.log(params.captcha + ' == ' + captchaCode);
     res.json({ responseCode: 1, message: 'Wrong Captcha, try again' });
   }
 });
 
+// route to get a fresh captcha
 app.post('/contact/refreshCaptcha', (req, res) => {
-  const num1 = Math.round(Math.random() * 20);
-  const num2 = Math.round(Math.random() * 20);
+  // generates 2 random numbers between 1 and 20 and saves them in a variable
+  const num1 = Math.ceil(Math.random() * 20);
+  const num2 = Math.ceil(Math.random() * 20);
+
+  // the result is just both of the numbers combined
   const result = num1 + num2;
+
+  // returns the 3 variables in json format
   res.json({ code1: num1, code2: num2, result: result });
 });
 
+// route to update captcha server-side
 app.post('/contact/updateCaptchaCode', (req, res) => {
+  // updates captchaCode to the code being sent via the post request
   captchaCode = req.body.result;
+  // returns status code 200
   res.status(200).send('updated');
 });
 
+// route for the impressum
 app.get('/impressum', (req, res) => {
   res.render('impressum');
 });
 
+// route for the privacy-agreement
 app.get('/privacy', (req, res) => {
   res.render('privacy');
 });
 
-// Gallery route
+// route leading to the gallery
 app.get('/gallery', (req, res) => {
   res.render('gallery', { carData }); // Pass carData to the template
 });
 
-// Dynamic car route
+// dynamic routes for each car inside the gallery
 app.get('/gallery/:carName', (req, res) => {
+  // gets the carname from the request parameters
   const carName = req.params.carName;
 
+  // searches for the car in the database via SQL
   db.get('SELECT * FROM carDBLong WHERE uid = ?', [carName], (err, row) => {
+    // if the car is not found or there was an error it leads to the 404 page
     if (err || !row) {
-      res.render('404'); // Render 404 if car not found or error occurs
+      res.render('404');
     } else {
-      res.render('carpage', { carData: row }); // Pass car data to carpage template
+      // if the car is found and no error it renders the carpage with the dynamic route
+      // and passes the data for that selected car to the ejs template
+      res.render('carpage', { carData: row });
     }
   });
 });
@@ -180,7 +205,7 @@ app.get('/gallery/:carName', (req, res) => {
 // ERROR HANDLING SECTION
 // **********************************************************************************************************
 
-// Handle errors
+// renders the 404 not found page if the page doesn't exist
 app.use((req, res) => {
-  res.status(404).render('404'); // Render 404 for unknown routes
+  res.status(404).render('404');
 });
