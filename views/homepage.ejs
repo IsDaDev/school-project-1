@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="home">
+    <main>
+      <div class="header-section">
+        <header>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        <div class="media">
+          <video muted id="header-video-1" autoplay>
+            <source src="assets/video.mp4" />
+          </video>
+          <img
+            src="assets/header-image-1.png"
+            alt="headerimg1"
+            id="header-image-1"
+          />
+          <img
+            src="assets/header-image-2.png"
+            alt="headerimg2"
+            id="header-image-2"
+          />
+        </div>
+        <div class="cta-button">
+          <button><a href="#COTD-section">Learn more</a></button>
+        </div>
+        <div class="control-button">
+          <div class="button-left">
+            <button id="control-button-left">
+              <img src="assets/arrow-left.png" alt="" height="30px" />
+            </button>
+          </div>
+          <div class="button-right">
+            <button id="control-button-right">
+              <img src="assets/arrow-right.png" alt="" height="30px" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="intro-section">
+        <div class="container">
+          <div class="image-section">
+            <img src="assets/logo.jpeg" alt="intro image" />
+          </div>
+          <div class="text-section">
+            <h1>About us</h1>
+            <ul>
+              <li>
+                <h2>Who are we?</h2>
+              </li>
+              <p>
+                At Project MOSC, we are a dedicated team of automotive designers
+                and racing enthusiasts united by our love for speed and
+                innovation. Our diverse backgrounds in engineering, graphic
+                design, and motorsport allow us to push the boundaries of
+                racecar design.
+                <br />
+                We believe that every racecar tells a unique story, and we aim
+                to showcase this through captivating designs that represent the
+                thrill of racing. As a close-knit community, we draw inspiration
+                from the vibrant world of motorsport, inspiring professionals
+                and enthusiasts alike with our creativity and craftsmanship.
+                <br />
+                Join us on our journey as we celebrate the intersection of art
+                and engineering, continually redefining what's possible in
+                racecar design.
+              </p>
+              <li>
+                <h2>What are we trying to achieve?</h2>
+              </li>
+              <p>
+                Our mission is to educate and inspire. We share our passion for
+                racecars with both enthusiasts and newcomers, fostering a deeper
+                understanding of the artistry, engineering, and history behind
+                these incredible machines.
+                <br />
+                Through engaging content and stunning presentations, we
+                highlight the unique features and innovations of each racecar.
+                We also showcase our designs, inviting our audience to
+                appreciate the beauty and performance of these vehicles.
+                <br />
+                Together, we aim to create a community where knowledge and
+                passion intersect, celebrating the rich heritage of racecars
+                while paving the way for future innovations in design and
+                performance.
+              </p>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="COTD-section" id="COTD-section">
+        <h2>We present you the car of the month</h2>
+        <div class="COTD">
+          <div class="card" data-class="<%= randomCar['class'] %>">
+            <div class="carImg">
+              <a
+                href="/gallery/<%= randomCar['uid'] %>"
+                class="carClass <%= randomCar['uid'] %>"
+                ><img src="<%= randomCar['image_url'] %>" alt="Racecar"
+              /></a>
+            </div>
+            <div class="textSection1">
+              <h3><%= randomCar["name"] %></h3>
+              <div></div>
+              <h3><%= randomCar["brand"] %></h3>
+              <h4><%= randomCar["class"] %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 MOSC</p>
+      <div class="footer-links">
+        <p><a href="/impressum">impressum</a></p>
+        <p><a href="/privacy">privacy</a></p>
+      </div>
+    </footer>
+    <script src="scripts/functionality.js"></script>
+  </body>
+</html>

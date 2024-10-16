@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="author"
+      content="paul mondl (isdadev) & phillip schlichting (philrico)"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Galerie</title>
+  </head>
+  <body id="gallery">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="filter">
+        <h3>Filters</h3>
+        <div class="filterClass">
+          <label for="filterClassCheckbox">Class</label>
+          <select name="filterClassSelection" id="filterClassSelection">
+            <option value="all">All</option>
+          </select>
+        </div>
+        <div class="filterTemp1"></div>
+        <div class="filterTemp2"></div>
+      </div>
+      <div class="gallery-container">
+        <% for( let i = 0; i < carData.length; i++ ) { %>
+        <div class="card" data-class="<%= carData[i]['class'] %>">
+          <div class="carImg">
+            <a
+              href="/gallery/<%= carData[i]['uid'] %>"
+              class="carClass <%= carData[i]['uid'] %>"
+              ><img src="<%= carData[i]['image_url'] %>" alt="Racecar"
+            /></a>
+          </div>
+          <div class="textSection1">
+            <h3><%= carData[i]["name"] %></h3>
+            <div></div>
+            <h3><%= carData[i]["brand"] %></h3>
+            <h4><%= carData[i]["class"] %></h4>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 MOSC</p>
+      <div class="footer-links">
+        <p><a href="/impressum">impressum</a></p>
+        <p><a href="/privacy">privacy</a></p>
+      </div>
+    </footer>
+    <script>
+      // variable to select the selection for the class-filter
+      const filterClassSelection = document.getElementById(
+        'filterClassSelection'
+      );
+      // fetches all classes from all cards
+      const allCarClasses = document.querySelectorAll('h4');
+      const allCarCards = document.querySelectorAll('.card');
+      // empty array for all classes
+      let classes = [];
+
+      // goes through each and every element inside the array
+      // that contains all the car classes
+      allCarClasses.forEach((element) => {
+        // variable that is just the text of the element
+        const carClass = element.innerHTML;
+        // checks if the class is included in the array
+        // the array is there to keep track if the element is there already
+        if (!classes.includes(carClass)) {
+          // if the element is not in there, it will push it into the array
+          classes.push(carClass);
+          // creates a new option
+          const newOption = document.createElement('option');
+
+          // selects the option will all important attributes
+          newOption.value = carClass;
+          newOption.id = carClass;
+          newOption.innerHTML = carClass;
+          // appends the new option to the filterClassSection
+          filterClassSelection.appendChild(newOption);
+        }
+      });
+
+      filterClassSelection.addEventListener('change', () => {
+        const selectedClass = filterClassSelection.value;
+
+        allCarCards.forEach((card) => {
+          const cardClassDataset = card.dataset.class;
+
+          if (selectedClass == 'all') {
+            card.style.display = '';
+          } else if (cardClassDataset == selectedClass) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
