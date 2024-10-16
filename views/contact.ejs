@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <meta name="author" content="paul mondl (isdadev) & phillipp schlichting (philrico)">
     <title>Contact us</title>
   </head>
   <body id="contact-page">
@@ -62,7 +63,7 @@
           <div class="contact-right-bottom">
             <div class="captcha-field">
               <label for="captcha">What is <span id="captchaX">x</span> + <span id="captchaY">y</span></label>
-              <button class="refreshCaptcha" type="menu">refresh captcha</button>
+              <button class="refreshCaptcha" type="button">refresh captcha</button>
             </div>
             <input type="number" name="captcha" id="captcha">
             <button type="submit">Submit</button>
@@ -75,7 +76,6 @@
           </div>
         </div>
       </div>
-      
       <footer>
         <p>&copy; 2024 MOSC</p>
         <div class="footer-links">
@@ -86,35 +86,7 @@
 
       <script src="scripts/form.js"></script>
       <script>
-      const getNewCaptcha = () => {
-        fetch('/contact/refreshCaptcha', {
-          method: 'POST',
-          })
-          .then((data) => data.json())
-          .then((data) => {
-            const captchaX = (document.querySelector('#captchaX').innerHTML =
-              data.code1);
-            const captchaY = (document.querySelector('#captchaY').innerHTML =
-              data.code2);
-              fetch('/contact/updateCaptchaCode', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({result: data.result})
-              })
-          });
-      };
-        
-      
-      window.addEventListener('load', getNewCaptcha())
-
-      const refreshCaptcha = document.querySelector('.refreshCaptcha')
-      refreshCaptcha.addEventListener('click', () => {
-        getNewCaptcha()
-      })
-
-      // TODO 
-      // Refresh button sometimes submits forum --> only problem is captcha
-
+          window.addEventListener('load', getNewCaptcha())
       </script>
   </body>
 </html>
