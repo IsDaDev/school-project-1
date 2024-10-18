@@ -7,6 +7,12 @@
   font-family: 'formular1', sans-serif !important;
 }
 
+:root {
+  --blue-gray: rgb(112, 151, 151);
+  --header-bg: rgb(61, 60, 60);
+  --cotd-bg: rgb(90, 88, 88);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -53,7 +59,7 @@ html {
 }
 
 #gallery {
-  background-color: rgb(112, 151, 151);
+  background-color: var(--blue-gray);
 }
 
 #gallery nav {
@@ -70,7 +76,7 @@ html {
 }
 
 #home {
-  background-color: rgb(61, 60, 60);
+  background-color: var(--header-bg);
   overflow-x: hidden;
 }
 
@@ -80,7 +86,6 @@ html {
 
 #home main .header-section {
   height: 100vh;
-  background-color: rgb(46, 94, 94);
 }
 
 #home main .header-section .media video {
@@ -97,10 +102,16 @@ html {
   opacity: 0;
 }
 
-#home main .header-section .cta-button button {
+#home main .header-section .cta-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 13%;
-  right: 50%;
+  width: 100%;
+}
+
+#home main .header-section .cta-button button {
   padding: 1rem;
   border-radius: 10px;
   background-color: gray;
@@ -128,8 +139,9 @@ html {
 
 #home main .intro-section {
   height: auto;
-  padding: 10rem 3rem;
+  padding: 3rem;
   color: white;
+  box-sizing: border-box;
 }
 
 #home main .intro-section h1 {
@@ -178,21 +190,21 @@ html {
 #home main .COTD-section {
   height: auto;
   text-align: center;
-  background-color: rgb(90, 88, 88);
+  background-color: var(--cotd-bg);
   padding: 5rem 30%;
 }
 
 #impressum,
 #privacy {
-  background-color: rgb(112, 151, 151);
+  background-color: var(--blue-gray);
 }
 
-.container {
+#privacy .container, #impressum .container {
   padding: 100px 20% 0 20%;
 }
 
 #contact-page {
-  background-color: rgb(112, 151, 151);
+  background-color: var(--blue-gray);
 }
 
 #contact {
