@@ -11,18 +11,30 @@
     <title>Privacy</title>
   </head>
   <body id="privacy">
-    <div>
-      <header>
-        <nav>
+    <header>
+      <nav class="desktop">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-mobile">
+        <div class="nav-mobile-symbol">
+          <img src="/assets/navbar-mobile-bars.png" alt="" width="40px" />
+        </div>
+        <div class="nav-mobile-links">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/gallery">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/impressum">Impressum</a></li>
+            <li><a href="/privacy">Privacy</a></li>
           </ul>
-        </nav>
-      </header>
-    </div>
-    <div class="container">
+        </div>
+      </div>
+    </header>
+    <main>
       <h2>Privacy Policy</h2>
       <p>Last updated: October 13, 2024</p>
       <p>
@@ -513,13 +525,19 @@
           >
         </li>
       </ul>
-    </div>
-    <footer>
-      <p>&copy; 2024 MOSC</p>
-      <div class="footer-links">
-        <p><a href="/impressum">impressum</a></p>
-        <p><a href="/privacy">privacy</a></p>
+      <div class="buttonDiv">
+        <button>
+          <a href="#">&uarr;</a>
+        </button>
       </div>
-    </footer>
+      <footer>
+        <p>&copy; 2024 MOSC</p>
+        <div class="footer-links">
+          <p><a href="/impressum">impressum</a></p>
+          <p><a href="/privacy">privacy</a></p>
+        </div>
+      </footer>
+    </main>
+    <script src="/scripts/functionality.js"></script>
   </body>
 </html>

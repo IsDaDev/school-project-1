@@ -12,14 +12,29 @@
   </head>
   <body id="contact-page">
     <header>
-        <nav>
+        <nav class="desktop">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/gallery">Gallery</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
+        <div class="nav-mobile">
+          <div class="nav-mobile-symbol">
+            <img src="/assets/navbar-mobile-bars.png" alt="" width="40px">
+          </div>
+          <div class="nav-mobile-links">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/impressum">Impressum</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
       </header>
+      <main>
     <div id="contact" class="slide-left">
         <div class="contact-left">
           <h3>
@@ -79,6 +94,7 @@
           </div>
         </div>
       </div>
+    
       <footer>
         <p>&copy; 2024 MOSC</p>
         <div class="footer-links">
@@ -86,10 +102,12 @@
           <p><a href="/privacy">privacy</a></p>
         </div>
       </footer>
+    </main>
 
       <!-- imports script for the form -->
       <!-- generates a new Captcha when the window loads -->
       <script src="scripts/form.js"></script>
+      <script src="scripts/functionality.js"></script>
       <script>
           window.addEventListener('load', getNewCaptcha())
       </script>

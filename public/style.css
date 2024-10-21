@@ -1,3 +1,7 @@
+/* *************************************************************** */
+/* import + root section + body styles */
+/* *************************************************************** */
+
 @font-face {
   font-family: 'formular1';
   src: url('font.ttf');
@@ -10,70 +14,24 @@
 :root {
   --blue-gray: rgb(112, 151, 151);
   --header-bg: rgb(61, 60, 60);
-  --cotd-bg: rgb(90, 88, 88);
+  --light-gray: rgb(76, 78, 77);
+  --color1: rgb(40, 133, 181);
 }
 
 body {
   margin: 0;
   padding: 0;
   color: white;
+  z-index: 1;
 }
 
 html {
   scroll-behavior: smooth;
 }
-#gallery .gallery-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
 
-#home main .COTD-section .card,
-#gallery .card {
-  border: 1px solid orange;
-  min-width: 25%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  margin: 30px;
-}
-
-#home main .COTD-section .carImg,
-#gallery .carImg {
-  height: 100%;
-}
-
-#home main .COTD-section .textSection1,
-#gallery .textSection1 {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 4fr 1fr;
-  padding: 1rem;
-}
-
-#gallery main {
-  display: grid;
-  grid-template-columns: 8% 1fr;
-}
-
-#gallery {
-  background-color: var(--blue-gray);
-}
-
-#gallery nav {
-  padding-bottom: 3rem;
-}
-
-#gallery .filter {
-  text-align: center;
-  margin-top: 0.5rem;
-}
-
-#gallery .filter .filterClass {
-  text-align: center;
-}
+/* *************************************************************** */
+/* home section */
+/* *************************************************************** */
 
 #home {
   background-color: var(--header-bg);
@@ -84,25 +42,26 @@ html {
   overflow: hidden;
 }
 
-#home main .header-section {
+#home .header-section {
+  background-color: var(--light-gray);
   height: 100vh;
 }
 
-#home main .header-section .media video {
+#home .header-section .media video {
   height: 100vh;
   width: 100vw;
   position: absolute;
   z-index: 0;
 }
 
-#home main .header-section .media img {
+#home .header-section .media img {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
 }
 
-#home main .header-section .cta-button {
+#home .header-section .cta-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,100 +70,181 @@ html {
   width: 100%;
 }
 
-#home main .header-section .cta-button button {
+#home .header-section .cta-button button {
   padding: 1rem;
   border-radius: 10px;
-  background-color: gray;
+  background-color: var(--color1);
 }
 
-#home main .header-section .cta-button button a {
+#home .header-section .cta-button button a {
   text-decoration: none;
   font-family: 'formular1', sans-serif;
   color: white;
 }
 
-#home main .header-section .control-button .button-left {
+#control-button-left,
+#control-button-right {
   position: absolute;
   bottom: 50%;
+  z-index: 3;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#control-button-left {
   left: 2%;
-  z-index: 3;
+  z-index: 12;
 }
 
-#home main .header-section .control-button .button-right {
-  position: absolute;
-  bottom: 50%;
+#control-button-right {
   right: 2%;
-  z-index: 3;
+  z-index: 12;
 }
 
-#home main .intro-section {
+#home .intro-section {
   height: auto;
   padding: 3rem;
   color: white;
   box-sizing: border-box;
 }
 
-#home main .intro-section h1 {
+#home .intro-section h1 {
   text-align: center;
 }
 
-#home main .intro-section li::marker {
+#home .intro-section li::marker {
   font-size: 24px;
 }
 
-#home main .intro-section .container {
+#home .intro-section .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-#home main .intro-section .text-section {
-  color: white;
-}
-
-#home main .intro-section .text-section p {
+#home .intro-section .text-section p {
   text-align: justify;
   line-height: 20px;
   letter-spacing: 1px;
 }
 
-#home main .intro-section .image-section {
-  margin: auto auto;
-}
-
-@media screen and (max-width: 800px) {
-  #home main .intro-section .container {
-    grid-template-columns: 1fr;
-  }
-
-  #home main .COTD-section {
-    padding: 3rem 10rem;
-  }
-}
-
-#home main .intro-section .image-section img {
+#home .intro-section .image-section img {
   width: 70%;
   height: 70%;
   margin: 15%;
 }
 
-#home main .COTD-section {
+#home .COTD-section {
   height: auto;
-  text-align: center;
-  background-color: var(--cotd-bg);
+  text-align: left;
+  background-color: var(--light-gray);
   padding: 5rem 30%;
 }
+
+#home .COTD-section h2 {
+  text-align: center;
+}
+
+#home .carImg img {
+  height: auto;
+  width: 100%;
+}
+
+#home .nav-mobile {
+  z-index: 10;
+}
+
+/* *************************************************************** */
+/* gallery + home section combinations */
+/* *************************************************************** */
+
+#home .COTD-section .textSection1,
+#gallery .textSection1 {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 4fr 1fr;
+  padding: 1rem;
+}
+
+#home .COTD-section .card,
+#gallery .card {
+  border: 3px solid white;
+  display: grid;
+  border-radius: 3%;
+  grid-template-rows: 1fr auto;
+  margin: 30px;
+}
+
+/* *************************************************************** */
+/* gallery section */
+/* *************************************************************** */
+
+#gallery .gallery-container {
+  width: 100%;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+#gallery .card .carImg img {
+  width: 100%;
+  height: auto;
+  border-radius: 3% 3% 0 0;
+  border-bottom: 3px solid white;
+}
+
+#gallery main {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+#gallery {
+  background-color: var(--light-gray);
+}
+
+#gallery nav {
+  padding-bottom: 3rem;
+}
+
+#gallery .filter {
+  z-index: 100;
+}
+
+#gallery .filter .filterClass {
+  text-align: left;
+}
+
+/* *************************************************************** */
+/* impressum + privacy section */
+/* *************************************************************** */
 
 #impressum,
 #privacy {
   background-color: var(--blue-gray);
 }
 
-#privacy .container, #impressum .container {
+#privacy main,
+#impressum main {
   padding: 100px 20% 0 20%;
 }
 
+#privacy .buttonDiv {
+  text-align: right;
+  padding-bottom: 100px;
+}
+
+#privacy button {
+  padding: 1rem;
+}
+
+/* *************************************************************** */
+/* contact section */
+/* *************************************************************** */
+
 #contact-page {
-  background-color: var(--blue-gray);
+  background-color: var(--light-gray);
+  z-index: 2;
 }
 
 #contact {
@@ -214,6 +254,11 @@ html {
   padding: 5rem;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+#contact .contact-slide-left {
+  z-index: 2;
 }
 
 #contact .contact-right {
@@ -223,12 +268,10 @@ html {
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 1fr;
-  grid-template-areas:
-    'top-left'
-    'top-right'
-    'message'
-    'button';
+  grid-template-areas: 'top-left' 'top-right' 'message' 'button';
   gap: 1rem;
+  position: relative;
+  z-index: 5;
 }
 
 #contact .contact-right input,
@@ -265,8 +308,14 @@ html {
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  width: 100%;
-  background-color: gray;
+  width: 87%;
+  background-color: var(--color1);
+}
+
+#contact .refreshCaptcha {
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
 }
 
 #contact .captcha-field {
@@ -290,12 +339,16 @@ input {
   align-items: center;
 }
 
+/* *************************************************************** */
+/* nav section */
+/* *************************************************************** */
+
 nav ul {
   display: flex;
   gap: 2rem;
   margin-right: 2%;
   position: absolute;
-  z-index: 3;
+  z-index: 15;
 }
 
 nav ul li {
@@ -307,6 +360,34 @@ nav ul li a {
   font-size: 30px;
   text-decoration: none;
   color: white;
+}
+
+.nav-mobile {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-mobile-links {
+  display: none;
+  text-align: center;
+}
+
+.nav-mobile-links ul {
+  padding: 0;
+}
+
+.nav-mobile-links ul li {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.nav-mobile-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 60px;
 }
 
 nav ul li::after {
@@ -323,6 +404,10 @@ nav ul li:hover::after {
   width: 100%;
 }
 
+/* *************************************************************** */
+/* footer section */
+/* *************************************************************** */
+
 footer {
   justify-content: space-between;
   padding: 0 3rem;
@@ -337,4 +422,101 @@ footer .footer-links {
 
 footer .footer-links a {
   color: white;
+}
+
+/* *************************************************************** */
+/* media queries */
+/* *************************************************************** */
+
+@media screen and (max-width: 800px) {
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .nav-mobile-symbol {
+    display: block;
+    position: absolute;
+    top: 4%;
+    left: 6%;
+  }
+
+  .nav-mobile {
+    display: flex;
+    z-index: 5;
+  }
+
+  footer * {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .nav-mobile-symbol {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #contact .contact-right input,
+  #contact .contact-right #message {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #contact .contact-right input,
+  #contact .contact-right #message {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #gallery .gallery-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #gallery .gallery-container {
+    grid-template-columns: 1fr;
+    padding-top: 6rem;
+  }
+
+  #gallery main {
+    display: block;
+  }
+
+  #gallery .filter {
+    position: absolute;
+    top: 2%;
+    left: 20%;
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  #gallery .filter {
+    position: relative;
+    top: 2%;
+    left: 3.75%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #home .intro-section .container {
+    grid-template-columns: 1fr;
+  }
+
+  #home #COTD-section {
+    padding: 1rem 2rem;
+  }
+
+  #home #COTD-section img {
+    width: 100%;
+    height: auto;
+  }
 }

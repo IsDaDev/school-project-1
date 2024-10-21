@@ -12,19 +12,34 @@
   </head>
   <body id="gallery">
     <header>
-      <nav>
+      <nav class="desktop">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/gallery">Gallery</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
+      <div class="nav-mobile">
+        <div class="nav-mobile-symbol">
+          <img src="/assets/navbar-mobile-bars.png" alt="" width="40px" />
+        </div>
+        <div class="nav-mobile-links">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/impressum">Impressum</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
     </header>
+
     <main>
       <div class="filter">
         <h3>Filters</h3>
         <div class="filterClass">
-          <label for="filterClassCheckbox">Class</label>
+          <label for="filterClassSelection">Class</label>
           <select name="filterClassSelection" id="filterClassSelection">
             <option value="all">All</option>
           </select>
@@ -32,6 +47,7 @@
         <div class="filterTemp1"></div>
         <div class="filterTemp2"></div>
       </div>
+
       <div class="gallery-container">
         <% for( let i = 0; i < carData.length; i++ ) { %>
         <div class="card" data-class="<%= carData[i]['class'] %>">
@@ -39,12 +55,12 @@
             <a
               href="/gallery/<%= carData[i]['uid'] %>"
               class="carClass <%= carData[i]['uid'] %>"
-              ><img src="<%= carData[i]['image_url'] %>" alt="Racecar"
-            /></a>
+            >
+              <img src="<%= carData[i]['image_url'] %>" alt="Racecar" />
+            </a>
           </div>
           <div class="textSection1">
             <h3><%= carData[i]["name"] %></h3>
-            <div></div>
             <h3><%= carData[i]["brand"] %></h3>
             <h4><%= carData[i]["class"] %></h4>
           </div>
@@ -52,6 +68,7 @@
         <% } %>
       </div>
     </main>
+
     <footer>
       <p>&copy; 2024 MOSC</p>
       <div class="footer-links">
@@ -59,6 +76,7 @@
         <p><a href="/privacy">privacy</a></p>
       </div>
     </footer>
+
     <script>
       // variable to select the selection for the class-filter
       const filterClassSelection = document.getElementById(
@@ -92,21 +110,36 @@
         }
       });
 
+      // *********************************
+      // class refers to a filter category
+      // *********************************
+
+      // adds an eventlistener to the filterClass Selection
+      // the listener looks for valuechange
       filterClassSelection.addEventListener('change', () => {
+        // assigns the value of the selection to a variable when changed
         const selectedClass = filterClassSelection.value;
 
+        // loops through all the cards
         allCarCards.forEach((card) => {
+          // gets the class of the cards
           const cardClassDataset = card.dataset.class;
 
+          // checks if selected Class (selection) equal all
           if (selectedClass == 'all') {
+            // then it doesn't change the display setting
             card.style.display = '';
+            // if the selected Class is the same as the class the car has
+            // it doesn't change the display
           } else if (cardClassDataset == selectedClass) {
             card.style.display = '';
+            // if its not the same it changes the display to none
           } else {
             card.style.display = 'none';
           }
         });
       });
     </script>
+    <script src="/scripts/functionality.js"></script>
   </body>
 </html>
