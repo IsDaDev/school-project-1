@@ -74,6 +74,7 @@ html {
   padding: 1rem;
   border-radius: 10px;
   background-color: var(--color1);
+  z-index: 110;
 }
 
 #home .header-section .cta-button button a {
@@ -185,6 +186,7 @@ html {
   justify-content: space-evenly;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+  
 }
 
 #gallery .card .carImg img {
@@ -197,6 +199,10 @@ html {
 #gallery main {
   display: grid;
   grid-template-columns: auto;
+}
+
+#gallery .card {
+  z-index: 11;
 }
 
 #gallery {
