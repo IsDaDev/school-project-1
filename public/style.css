@@ -91,6 +91,7 @@ html {
   background: none;
   border: none;
   cursor: pointer;
+  filter: brightness(10);
 }
 
 #control-button-left {
@@ -186,7 +187,6 @@ html {
   justify-content: space-evenly;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
-  
 }
 
 #gallery .card .carImg img {
@@ -227,7 +227,14 @@ html {
 
 #impressum,
 #privacy {
-  background-color: var(--blue-gray);
+  background-color: var(--light-gray);
+  z-index: 2;
+}
+
+#privacy p,
+#impressum p {
+  position: relative;
+  z-index: 20;
 }
 
 #privacy main,
@@ -374,6 +381,10 @@ nav ul li a {
   position: absolute;
   justify-content: center;
   align-items: center;
+}
+
+.nav-mobile .nav-mobile-symbol img {
+  filter: invert(1);
 }
 
 .nav-mobile-links {

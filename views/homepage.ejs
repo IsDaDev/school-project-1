@@ -54,7 +54,7 @@
         </div>
 
         <div class="cta-button">
-          <button><a href="#COTD-section">Learn more</a></button>
+          <button id="cta">Learn more</button>
         </div>
 
         <button id="control-button-left">
@@ -127,6 +127,11 @@
       </div>
     </footer>
 
+    <script>
+      document.querySelector('#cta').addEventListener('click', () => {
+        window.location.href = '#COTD-section';
+      });
+    </script>
     <script src="/scripts/functionality.js"></script>
   </body>
 </html>
