@@ -35,6 +35,24 @@
       </div>
     </header>
 
-    <main></main>
+    <main>
+      <div class="container">
+        <div class="image">
+          <img src="/assets/testimages/03.webp" alt="#" />
+        </div>
+        <div class="info">
+          <h2><%= carData['name'] %></h2>
+          <h3><%= carData['class'] %> <%= carData['brand'] %></h3>
+          <table id="table">
+            <% Object.entries(carData).forEach(([key, value]) => { %>
+            <tr>
+              <td><%= key %></td>
+              <td><%= value %></td>
+            </tr>
+            <% }) %>
+          </table>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

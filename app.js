@@ -9,7 +9,7 @@
 // **********************************************************************************************************
 
 // require file to get the public and private key
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 // import necessary modules
 const express = require('express');
@@ -197,6 +197,7 @@ app.get('/gallery/:carName', (req, res) => {
       // if the car is found and no error it renders the carpage with the dynamic route
       // and passes the data for that selected car to the ejs template
       res.render('carpage', { carData: row });
+      console.log(row);
     }
   });
 });
