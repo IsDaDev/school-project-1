@@ -235,15 +235,26 @@ html {
 }
 
 #carpage .container {
-  display: grid;
+  display: block;
   border: 1px solid black;
   width: 90%;
   margin: auto;
-  grid-template-columns: 2fr 2fr;
+}
+
+#carpage table {
+  width: 100%;
+}
+
+#carpage #key {
+  margin-right: 100px;
 }
 
 #carpage .info {
-  margin: auto;
+  margin: 30px;
+}
+
+#carpage .nav-mobile-symbol {
+  width: 50px;
 }
 
 #carpage img {
@@ -569,5 +580,14 @@ footer .footer-links a {
   #home #COTD-section img {
     width: 100%;
     height: auto;
+  }
+
+  #carpage .container {
+    margin-top: 5rem;
+    display: block;
+  }
+
+  #carpage table {
+    width: 100%;
   }
 }
