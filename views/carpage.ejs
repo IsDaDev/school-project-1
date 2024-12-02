@@ -8,7 +8,7 @@
       content="paul mondl (isdadev) & phillip schlichting (philrico)"
     />
     <link rel="stylesheet" href="/style.css" />
-    <title><%= carData['name'] %> </title>
+    <title><%= carData['name'] %></title>
   </head>
   <body id="carpage">
     <header>
@@ -46,9 +46,10 @@
           <table id="table">
             <% Object.entries(carData).forEach(([key, value]) => { %>
             <tr>
-              <td id="key"><%= key %></td>
-              <td id="value"><%= value %></td>
+              <td><%= key %></td>
+              <td><%= value %></td>
             </tr>
+
             <% }) %>
           </table>
         </div>

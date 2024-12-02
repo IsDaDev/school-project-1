@@ -3,12 +3,12 @@
 /* *************************************************************** */
 
 @font-face {
-  font-family: 'formular1';
-  src: url('font.ttf');
+  font-family: "formular1";
+  src: url("font.ttf");
 }
 
 * {
-  font-family: 'formular1', sans-serif !important;
+  font-family: "formular1", sans-serif !important;
 }
 
 :root {
@@ -79,7 +79,7 @@ html {
 
 #home .header-section .cta-button button a {
   text-decoration: none;
-  font-family: 'formular1', sans-serif;
+  font-family: "formular1", sans-serif;
   color: white;
 }
 
@@ -237,7 +237,7 @@ html {
 #carpage .container {
   display: block;
   border: 1px solid black;
-  width: 90%;
+  width: 70%;
   margin: auto;
 }
 
@@ -259,7 +259,6 @@ html {
 
 #carpage img {
   width: 100%;
-  height: 100%;
 }
 
 /* *************************************************************** */
@@ -326,7 +325,7 @@ html {
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 1fr;
-  grid-template-areas: 'top-left' 'top-right' 'message' 'button';
+  grid-template-areas: "top-left" "top-right" "message" "button";
   gap: 1rem;
   position: relative;
   z-index: 5;
@@ -358,7 +357,7 @@ html {
   grid-area: message;
 }
 
-#contact .contact-right button[type='submit'] {
+#contact .contact-right button[type="submit"] {
   grid-area: button;
   padding: 10px 20px;
   font-size: 18px;
@@ -453,7 +452,7 @@ nav ul li a {
 }
 
 nav ul li::after {
-  content: '';
+  content: "";
   width: 0%;
   height: 2px;
   display: block;
